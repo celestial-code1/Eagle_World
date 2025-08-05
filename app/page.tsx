@@ -1,15 +1,9 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import {
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
   CheckCircle,
   Users,
   Globe,
@@ -23,6 +17,10 @@ import {
   Wrench,
   Award,
   FileText,
+  HardHat,
+  Settings,
+  Cpu,
+  Hammer,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -37,6 +35,28 @@ function updateDots(activeIndex: number) {
       dot.className = "slider-dot w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors bg-white/50 hover:bg-white/70"
     }
   })
+}
+
+// Lightbox state and functions
+function openLightbox(imageSrc: string, title: string) {
+  const lightbox = document.getElementById("lightbox")
+  const lightboxImg = document.getElementById("lightbox-img") as HTMLImageElement
+  const lightboxTitle = document.getElementById("lightbox-title")
+
+  if (lightbox && lightboxImg && lightboxTitle) {
+    lightboxImg.src = imageSrc
+    lightboxTitle.textContent = title
+    lightbox.classList.remove("hidden")
+    document.body.style.overflow = "hidden" // Prevent background scrolling
+  }
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById("lightbox")
+  if (lightbox) {
+    lightbox.classList.add("hidden")
+    document.body.style.overflow = "auto" // Restore scrolling
+  }
 }
 
 export default function EuroWeldProWebsite() {
@@ -127,17 +147,17 @@ export default function EuroWeldProWebsite() {
           <div className="grid lg:grid-cols-2 gap-8 items-center min-h-screen py-8">
             <div className="space-y-4 order-2 lg:order-1">
               <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold leading-tight">
-                Your Trusted Partner for Expert{" "}
-                <span className="text-orange-500">Welders, Fabricators, Electricians etc</span> Across Europe
+                Your Trusted Partner Across Europe
+                <span className="text-orange-500">Expert Welders, Fabricators, Electricians & More</span>
               </h1>
               <p className="text-base sm:text-lg text-gray-300">
                 Specializing in Boiler Construction, Oil & Gas, Food Industry, Shipbuilding, and Fertilizer Sectors.
               </p>
+              <p>🔧 What We Do</p>
               <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
-                We are a premier company dedicated to providing highly skilled welders, fabricators, electricians to
-                industries throughout Europe. Our expertise ensures your projects in critical sectors like Boiler
-                Construction, Oil & Gas, Food Industry, Shipbuilding, and Fertilizer are completed efficiently and to
-                the highest standards. We focus on timely and effective workforce solutions to boost your productivity.
+                At Eagle World, we provide highly skilled welders, fabricators, electricians, and more to industries
+                across Europe. Our professionals are experienced, certified, and ready to support your projects with
+                precision and reliability.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 my-6">
                 <div className="flex items-center space-x-3">
@@ -176,7 +196,7 @@ export default function EuroWeldProWebsite() {
             </div>
             <div className="relative order-1 lg:order-2">
               <Image
-                src="/pic10.jpg"
+                src="/pic9.jpg"
                 alt="Professional welders at work"
                 width={800}
                 height={600}
@@ -198,13 +218,38 @@ export default function EuroWeldProWebsite() {
           </div>
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center mb-12 sm:mb-16">
             <div className="order-2 lg:order-1">
-              <Image
-                src="/eagle.jpg"
-                alt="Industrial facility"
-                width={600}
-                height={500}
-                className="rounded-lg shadow-lg w-full h-auto"
-              />
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-800 mb-6">Our Certifications</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
+                {/* Certification Images */}
+                <div
+                  className="cursor-pointer hover:scale-105 transition-transform"
+                  onClick={() => openLightbox("/cert1.jpg", "")}
+                >
+                  <Image
+                    src="/cert1.jpg"
+                    alt="ISO 9001:2015 Certification"
+                    width={150}
+                    height={200}
+                    className="rounded-lg shadow-md w-full h-32 object-cover border-2 border-gray-200 hover:border-orange-500"
+                  />
+                  <p className="text-xs text-center mt-2 text-gray-600"></p>
+                </div>
+
+                <div
+                  className="cursor-pointer hover:scale-105 transition-transform"
+                  onClick={() => openLightbox("/cert2.jpg", "")}
+                >
+                  <Image
+                    src="/cert2.jpg"
+                    alt="TUV ANB Certification"
+                    width={150}
+                    height={200}
+                    className="rounded-lg shadow-md w-full h-32 object-cover border-2 border-gray-200 hover:border-orange-500"
+                  />
+                  <p className="text-xs text-center mt-2 text-gray-600"></p>
+                </div>
+              </div>
+              <p className="text-sm text-gray-600 italic">Click on any certification to view full size</p>
             </div>
             <div className="space-y-6 order-1 lg:order-2">
               <div>
@@ -373,8 +418,14 @@ export default function EuroWeldProWebsite() {
           </div>
           <div>
             <h3 className="text-2xl sm:text-3xl font-bold text-slate-800 text-center mb-8 sm:mb-12">
-              Industries We Serve
+              🏗 Industries We Serve
             </h3>
+            <h3 className="text-sm sm:text-base font-bold">
+              We specialize in delivering workforce solutions for critical industrial sectors:
+            </h3>
+            <br />
+            <br />
+
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
               <Card className="text-center hover:shadow-lg transition-shadow bg-gradient-to-br from-orange-50 to-orange-100">
                 <CardHeader className="pb-4">
@@ -385,29 +436,37 @@ export default function EuroWeldProWebsite() {
               <Card className="text-center hover:shadow-lg transition-shadow bg-gradient-to-br from-blue-50 to-blue-100">
                 <CardHeader className="pb-4">
                   <Fuel className="h-12 w-12 sm:h-16 sm:w-16 text-blue-600 mx-auto mb-2" />
-                  <CardTitle className="text-slate-800 text-sm sm:text-base">Oil & Gas</CardTitle>
+                  <CardTitle className="text-slate-800 text-sm:text-base">Oil & Gas</CardTitle>
                 </CardHeader>
               </Card>
               <Card className="text-center hover:shadow-lg transition-shadow bg-gradient-to-br from-green-50 to-green-100">
                 <CardHeader className="pb-4">
                   <Utensils className="h-12 w-12 sm:h-16 sm:w-16 text-green-600 mx-auto mb-2" />
-                  <CardTitle className="text-slate-800 text-sm sm:text-base">Food Industry</CardTitle>
+                  <CardTitle className="text-slate-800 text-sm:text-base">Food Industry</CardTitle>
                 </CardHeader>
               </Card>
               <Card className="text-center hover:shadow-lg transition-shadow bg-gradient-to-br from-cyan-50 to-cyan-100">
                 <CardHeader className="pb-4">
                   <Ship className="h-12 w-12 sm:h-16 sm:w-16 text-cyan-600 mx-auto mb-2" />
-                  <CardTitle className="text-slate-800 text-sm sm:text-base">Shipbuilding</CardTitle>
+                  <CardTitle className="text-slate-800 text-sm:text-base">Shipbuilding</CardTitle>
                 </CardHeader>
               </Card>
               <Card className="text-center hover:shadow-lg transition-shadow bg-gradient-to-br from-purple-50 to-purple-100 col-span-2 sm:col-span-1">
                 <CardHeader className="pb-4">
                   <Building2 className="h-12 w-12 sm:h-16 sm:w-16 text-purple-600 mx-auto mb-2" />
-                  <CardTitle className="text-slate-800 text-sm sm:text-base">Fertilizer</CardTitle>
+                  <CardTitle className="text-slate-800 text-sm:text-base">Fertilizer Manufacturing</CardTitle>
                 </CardHeader>
               </Card>
             </div>
           </div>
+          <br />
+          <br />
+             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto font-bold">
+            Our team understands the unique requirements of each sector and adapts accordingly to deliver results that exceed expectations.
+            </p>
+
+        
+
 
           {/* Image Slider Section */}
           <div className="mt-12 sm:mt-20">
@@ -615,40 +674,113 @@ export default function EuroWeldProWebsite() {
       {/* For Candidates Section */}
       <section id="candidates" className="py-12 sm:py-20 bg-gradient-to-r from-slate-800 to-slate-700 text-white">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center mb-16">
             <div className="order-2 lg:order-1">
               <h2 className="text-3xl sm:text-4xl font-bold mb-6">Join Our Expert Team</h2>
               <p className="text-lg sm:text-xl text-gray-300 mb-8">
                 Opportunities for skilled welders and fabricators seeking rewarding careers across Europe
               </p>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">Why Work With Us?</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">💡 Why Choose Eagle World?</h3>
               <div className="space-y-4 mb-8">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-orange-500 flex-shrink-0" />
-                  <span className="text-sm sm:text-base">Access to leading European industrial projects</span>
+                <div className="flex items-start space-x-3">
+                  <span className="text-sm sm:text-base">
+                    ⚙ Industry Expertise – Decades of experience in supplying skilled professionals to European
+                    industries.
+                  </span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-orange-500 flex-shrink-0" />
-                  <span className="text-sm sm:text-base">Competitive remuneration and benefits</span>
+                <div className="flex items-start space-x-3">
+                  <span className="text-sm sm:text-base">
+                    ⏱ Timely Solutions – Fast, reliable deployment to keep your projects on schedule.
+                  </span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-orange-500 flex-shrink-0" />
-                  <span className="text-sm sm:text-base">Safe and professional working environments</span>
+                <div className="flex items-start space-x-3">
+                  <span className="text-sm sm:text-base">
+                    📈 Productivity Boost – Skilled manpower tailored to maximize your operational efficiency.
+                  </span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-orange-500 flex-shrink-0" />
-                  <span className="text-sm sm:text-base">Support with visa and travel arrangements</span>
+                <div className="flex items-start space-x-3">
+                  <span className="text-sm sm:text-base">
+                    🌐 Pan-European Reach – Seamless workforce delivery across borders.
+                  </span>
                 </div>
               </div>
             </div>
             <div className="order-1 lg:order-2">
               <Image
-                src="/pic1.jpg"
+                src="/pic.webp"
                 alt="Professional team"
                 width={600}
                 height={500}
                 className="rounded-lg shadow-2xl w-full h-auto"
               />
+            </div>
+          </div>
+
+          {/* Our Workforce Section */}
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 sm:p-8">
+            <div className="text-center mb-8 sm:mb-12">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 flex items-center justify-center">
+                <p className="h-8 w-8 sm:h-10 sm:w-10 text-orange-500 mr-3" />👷 Our Workforce
+              </h3>
+              <p className="text-base sm:text-lg text-gray-200 max-w-3xl mx-auto">
+                We recruit, train, and deploy only the most competent professionals, including:
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
+              {/* Welders */}
+              <div className="text-center group hover:scale-105 transition-transform">
+                <div className="bg-white/20 rounded-lg p-4 sm:p-6 mb-3">
+                  <Wrench className="h-12 w-12 sm:h-16 sm:w-16 text-orange-400 mx-auto mb-2 group-hover:text-orange-300 transition-colors" />
+                </div>
+                <h4 className="text-sm sm:text-base font-semibold text-white">Welders</h4>
+              </div>
+
+              {/* Fabricators */}
+              <div className="text-center group hover:scale-105 transition-transform">
+                <div className="bg-white/20 rounded-lg p-4 sm:p-6 mb-3">
+                  <Building2 className="h-12 w-12 sm:h-16 sm:w-16 text-blue-400 mx-auto mb-2 group-hover:text-blue-300 transition-colors" />
+                </div>
+                <h4 className="text-sm sm:text-base font-semibold text-white">Fabricators</h4>
+              </div>
+
+              {/* Electricians */}
+              <div className="text-center group hover:scale-105 transition-transform">
+                <div className="bg-white/20 rounded-lg p-4 sm:p-6 mb-3">
+                  <Zap className="h-12 w-12 sm:h-16 sm:w-16 text-yellow-400 mx-auto mb-2 group-hover:text-yellow-300 transition-colors" />
+                </div>
+                <h4 className="text-sm sm:text-base font-semibold text-white">Electricians</h4>
+              </div>
+
+              {/* Fitters */}
+              <div className="text-center group hover:scale-105 transition-transform">
+                <div className="bg-white/20 rounded-lg p-4 sm:p-6 mb-3">
+                  <Settings className="h-12 w-12 sm:h-16 sm:w-16 text-green-400 mx-auto mb-2 group-hover:text-green-300 transition-colors" />
+                </div>
+                <h4 className="text-sm sm:text-base font-semibold text-white">Fitters</h4>
+              </div>
+
+              {/* Pipe Welders */}
+              <div className="text-center group hover:scale-105 transition-transform">
+                <div className="bg-white/20 rounded-lg p-4 sm:p-6 mb-3">
+                  <Cpu className="h-12 w-12 sm:h-16 sm:w-16 text-purple-400 mx-auto mb-2 group-hover:text-purple-300 transition-colors" />
+                </div>
+                <h4 className="text-sm sm:text-base font-semibold text-white">Pipe Welders</h4>
+              </div>
+
+              {/* Technical Specialists */}
+              <div className="text-center group hover:scale-105 transition-transform">
+                <div className="bg-white/20 rounded-lg p-4 sm:p-6 mb-3">
+                  <Hammer className="h-12 w-12 sm:h-16 sm:w-16 text-red-400 mx-auto mb-2 group-hover:text-red-300 transition-colors" />
+                </div>
+                <h4 className="text-sm sm:text-base font-semibold text-white">Technical Specialists</h4>
+              </div>
+            </div>
+
+            <div className="text-center mt-8 sm:mt-12">
+              <p className="text-sm sm:text-base text-gray-200 italic">
+                And other technical specialists
+              </p>
             </div>
           </div>
         </div>
@@ -657,94 +789,107 @@ export default function EuroWeldProWebsite() {
       {/* Contact Section */}
       <section id="contact" className="py-12 sm:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">Contact Us</h2>
-            <p className="text-lg sm:text-xl text-gray-600">
-              Ready to discuss your manpower needs? Get in touch with our team
-            </p>
-          </div>
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
-            <div className="space-y-6 sm:space-y-8">
-              <div className="flex items-start space-x-4">
-                <MapPin className="h-5 w-5 sm:h-6 sm:w-6 text-orange-500 mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="font-semibold text-slate-800 mb-1 text-sm sm:text-base">Our Location</h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    18 OFFICE 3,
-                    <br />
-                    TRIQ IGNAZIO GAVINO BONAVITA,
-                    <br />
-                    PEMBROKE
-                    <br />
-                    PBK 1150
-                    <br />
-                    Malta
-                  </p>
+          {/* Get in Touch Section */}
+          <div className="mb-8 sm:mb-12">
+            <div className="text-center pb-4 mb-6">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-slate-800">📞 Get in Touch</h2>
+              <p className="text-gray-600 text-base sm:text-lg">Have a project in mind or need workforce support?</p>
+            </div>
+            <div className="space-y-4 sm:space-y-6">
+              {/* Contact Details */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                <div className="flex items-center space-x-3">
+                  <div>
+                    <span className="text-sm sm:text-base font-medium text-slate-800">📧 Email:</span>
+                    <p className="text-orange-600 hover:text-orange-700 transition-colors">
+                      <a href="mailto:info@eagleworld.com" className="text-sm sm:text-base">
+                        info@eagleworld.com
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-3">
+                  <div>
+                    <span className="text-sm sm:text-base font-medium text-slate-800">📞 Phone:</span>
+                    <p className="text-orange-600 hover:text-orange-700 transition-colors">
+                      <a href="tel:+356-99977976" className="text-sm sm:text-base">
+                        +356 99977976
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-3">
+                  <div>
+                    <span className="text-sm sm:text-base font-medium text-slate-800">🌍 Website:</span>
+                    <p className="text-orange-600 hover:text-orange-700 transition-colors">
+                      <a
+                        href="https://www.eagleworld.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm sm:text-base"
+                      >
+                        www.eagleworld.com
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-3">
+                  <div>
+                    <span className="text-sm sm:text-base font-medium text-slate-800">📍 Head Office:</span>
+                    <p className="text-gray-600 text-sm sm:text-base">
+                      18 Office 3, Triq Ignazio Gavino Bonavita,
+                      <br />
+                      Pembroke PBK 1150, Malta
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="flex items-start space-x-4">
-                <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-orange-500 mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="font-semibold text-slate-800 mb-1 text-sm sm:text-base">Phone</h3>
-                  <p className="text-gray-600 text-sm sm:text-base">+356 9939 9193</p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <Mail className="h-5 w-5 sm:h-6 sm:w-6 text-orange-500 mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="font-semibold text-slate-800 mb-1 text-sm sm:text-base">Email</h3>
-                  <p className="text-gray-600 text-sm sm:text-base">Profitech@eagleworldlimited.com</p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <Clock className="h-5 w-5 sm:h-6 sm:w-6 text-orange-500 mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="font-semibold text-slate-800 mb-1 text-sm sm:text-base">Operating Hours</h3>
-                  <p className="text-gray-600 text-sm sm:text-base">Monday - Friday: 8:00 AM - 6:00 PM CET</p>
+
+              {/* Divider */}
+              <div className="border-t border-gray-300 my-6"></div>
+
+              {/* Social Media Links */}
+              <div className="text-center">
+                <h4 className="text-lg sm:text-xl font-semibold mb-4 text-slate-800">🔗 Connect With Us</h4>
+                <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+                  <a
+                    href="https://linkedin.com/company/eagleworld"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors text-sm sm:text-base font-medium flex items-center space-x-2"
+                  >
+                    <span>LinkedIn</span>
+                  </a>
+                  <a
+                    href="https://facebook.com/eagleworld"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-blue-800 hover:bg-blue-900 text-white px-4 py-2 rounded-lg transition-colors text-sm sm:text-base font-medium flex items-center space-x-2"
+                  >
+                    <span>Facebook</span>
+                  </a>
+                  <a
+                    href="https://instagram.com/eagleworld"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-lg transition-colors text-sm sm:text-base font-medium flex items-center space-x-2"
+                  >
+                    <span>Instagram</span>
+                  </a>
+                  <a
+                    href="https://wa.me/35699977976"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors text-sm sm:text-base font-medium flex items-center space-x-2"
+                  >
+                    <span>WhatsApp</span>
+                  </a>
                 </div>
               </div>
             </div>
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg sm:text-xl">Send us a message</CardTitle>
-                <CardDescription className="text-sm sm:text-base">
-                  We'll get back to you within 24 hours
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1">Name</label>
-                      <Input placeholder="Your name" className="text-sm sm:text-base" />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1">Company</label>
-                      <Input placeholder="Your company" className="text-sm sm:text-base" />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                    <Input type="email" placeholder="your.email@company.com" className="text-sm sm:text-base" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Subject</label>
-                    <Input placeholder="How can we help you?" className="text-sm sm:text-base" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Message</label>
-                    <Textarea
-                      placeholder="Tell us about your project requirements..."
-                      rows={4}
-                      className="text-sm sm:text-base"
-                    />
-                  </div>
-                  <Button className="w-full bg-orange-600 hover:bg-orange-700 text-sm sm:text-base">
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </section>
@@ -795,7 +940,7 @@ export default function EuroWeldProWebsite() {
             </div>
             <div>
               <h4 className="font-semibold mb-4 text-sm sm:text-base">Industries</h4>
-              <ul className="space-y-2 text-gray-400 text-sm sm:text-base">
+              <ul className="space-y-2 text-gray-400 text-sm:text-base">
                 <li>Boiler Construction</li>
                 <li>Oil & Gas</li>
                 <li>Food Industry</li>
@@ -837,6 +982,32 @@ export default function EuroWeldProWebsite() {
           </div>
         </div>
       </footer>
+      {/* Lightbox Modal */}
+      <div
+        id="lightbox"
+        className="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4"
+        onClick={closeLightbox}
+      >
+        <div className="relative max-w-4xl max-h-full">
+          <button
+            onClick={closeLightbox}
+            className="absolute -top-10 right-0 text-white hover:text-gray-300 text-2xl font-bold z-10"
+          >
+            ✕
+          </button>
+          <Image
+            id="lightbox-img"
+            src="/placeholder.svg"
+            alt="Certification"
+            width={800}
+            height={600}
+            className="max-w-full max-h-[80vh] object-contain rounded-lg"
+          />
+          <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4 rounded-b-lg">
+            <h3 id="lightbox-title" className="text-lg font-semibold text-center"></h3>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
