@@ -733,7 +733,7 @@ export default function EuroWeldProWebsite() {
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 sm:p-8">
             <div className="text-center mb-8 sm:mb-12">
               <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 flex items-center justify-center">
-                <HardHat className="h-8 w-8 sm:h-10 sm:w-10 text-orange-500 mr-3" />👷 Our Workforce
+                <p className="h-8 w-8 sm:h-10 sm:w-10 text-orange-500 mr-3" />👷 Our Workforce
               </h3>
               <p className="text-base sm:text-lg text-gray-200 max-w-3xl mx-auto">
                 We recruit, train, and deploy only the most competent professionals, including:
