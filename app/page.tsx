@@ -21,6 +21,7 @@ import {
   Settings,
   Cpu,
   Hammer,
+  Download,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -57,6 +58,17 @@ function closeLightbox() {
     lightbox.classList.add("hidden")
     document.body.style.overflow = "auto" // Restore scrolling
   }
+}
+
+// PDF Download function
+function downloadPDF(pdfUrl: string, fileName: string) {
+  const link = document.createElement("a")
+  link.href = pdfUrl
+  link.download = fileName
+  link.target = "_blank"
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
 }
 
 export default function EuroWeldProWebsite() {
@@ -249,7 +261,25 @@ export default function EuroWeldProWebsite() {
                   <p className="text-xs text-center mt-2 text-gray-600"></p>
                 </div>
               </div>
-              <p className="text-sm text-gray-600 italic">Click on any certification to view full size</p>
+              <p className="text-sm text-gray-600 italic mb-4">Click on any certification to view full size</p>
+
+              {/* PDF Download Section */}
+              <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm">
+                <h4 className="text-lg font-semibold text-slate-800 mb-3 flex items-center">
+                  <FileText className="h-5 w-5 text-orange-500 mr-2" />
+                  Company certificates
+                </h4>
+                <div className="space-y-2">
+                  <button
+                    onClick={() => downloadPDF("/pdf_certfication.pdf", "Eagle-World-Company-certification.pdf")}
+                    className="flex items-center space-x-2 text-orange-600 hover:text-orange-700 transition-colors text-sm font-medium"
+                  >
+                    <Download className="h-4 w-4" />
+                    <span>Download Company Certificates (PDF)</span>
+                  </button>
+                  {/* <p className="text-xs text-gray-500">Complete overview of our services and capabilities</p> */}
+                </div>
+              </div>
             </div>
             <div className="space-y-6 order-1 lg:order-2">
               <div>
@@ -459,14 +489,13 @@ export default function EuroWeldProWebsite() {
               </Card>
             </div>
           </div>
+
           <br />
           <br />
-             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto font-bold">
-            Our team understands the unique requirements of each sector and adapts accordingly to deliver results that exceed expectations.
-            </p>
-
-        
-
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto font-bold">
+            Our team understands the unique requirements of each sector and adapts accordingly to deliver results that
+            exceed expectations.
+          </p>
 
           {/* Image Slider Section */}
           <div className="mt-12 sm:mt-20">
@@ -705,13 +734,13 @@ export default function EuroWeldProWebsite() {
                 </div>
               </div>
             </div>
-            <div className="order-1 lg:order-2">
+            <div className="order-1 lg:order-2 flex justify-center">
               <Image
-                src="/pic.webp"
+                src="/join.jpg"
                 alt="Professional team"
-                width={600}
-                height={500}
-                className="rounded-lg shadow-2xl w-full h-auto"
+                width={400}
+                height={300}
+                className="rounded-lg shadow-2xl max-w-sm w-full h-auto"
               />
             </div>
           </div>
@@ -720,7 +749,7 @@ export default function EuroWeldProWebsite() {
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 sm:p-8">
             <div className="text-center mb-8 sm:mb-12">
               <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 flex items-center justify-center">
-                <p className="h-8 w-8 sm:h-10 sm:w-10 text-orange-500 mr-3" />👷 Our Workforce
+                <HardHat className="h-8 w-8 sm:h-10 sm:w-10 text-orange-500 mr-3" />👷 Our Workforce
               </h3>
               <p className="text-base sm:text-lg text-gray-200 max-w-3xl mx-auto">
                 We recruit, train, and deploy only the most competent professionals, including:
@@ -778,9 +807,7 @@ export default function EuroWeldProWebsite() {
             </div>
 
             <div className="text-center mt-8 sm:mt-12">
-              <p className="text-sm sm:text-base text-gray-200 italic">
-                And other technical specialists
-              </p>
+              <p className="text-sm sm:text-base text-gray-200 italic">And other technical specialists</p>
             </div>
           </div>
         </div>
@@ -940,7 +967,7 @@ export default function EuroWeldProWebsite() {
             </div>
             <div>
               <h4 className="font-semibold mb-4 text-sm sm:text-base">Industries</h4>
-              <ul className="space-y-2 text-gray-400 text-sm:text-base">
+              <ul className="space-y-2 text-gray-400 text-sm sm:text-base">
                 <li>Boiler Construction</li>
                 <li>Oil & Gas</li>
                 <li>Food Industry</li>
@@ -982,32 +1009,6 @@ export default function EuroWeldProWebsite() {
           </div>
         </div>
       </footer>
-      {/* Lightbox Modal */}
-      <div
-        id="lightbox"
-        className="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4"
-        onClick={closeLightbox}
-      >
-        <div className="relative max-w-4xl max-h-full">
-          <button
-            onClick={closeLightbox}
-            className="absolute -top-10 right-0 text-white hover:text-gray-300 text-2xl font-bold z-10"
-          >
-            ✕
-          </button>
-          <Image
-            id="lightbox-img"
-            src="/placeholder.svg"
-            alt="Certification"
-            width={800}
-            height={600}
-            className="max-w-full max-h-[80vh] object-contain rounded-lg"
-          />
-          <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4 rounded-b-lg">
-            <h3 id="lightbox-title" className="text-lg font-semibold text-center"></h3>
-          </div>
-        </div>
-      </div>
     </div>
   )
 }
