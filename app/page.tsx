@@ -1,5 +1,4 @@
 "use client"
-
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -43,7 +42,6 @@ function openLightbox(imageSrc: string, title: string) {
   const lightbox = document.getElementById("lightbox")
   const lightboxImg = document.getElementById("lightbox-img") as HTMLImageElement
   const lightboxTitle = document.getElementById("lightbox-title")
-
   if (lightbox && lightboxImg && lightboxTitle) {
     lightboxImg.src = imageSrc
     lightboxTitle.textContent = title
@@ -78,7 +76,6 @@ export default function EuroWeldProWebsite() {
       slider.dataset.currentIndex = "0"
     }
   }, [])
-
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Header */}
@@ -148,7 +145,6 @@ export default function EuroWeldProWebsite() {
           </div>
         </div>
       </header>
-
       {/* Hero Section */}
       <section
         id="home"
@@ -218,7 +214,6 @@ export default function EuroWeldProWebsite() {
           </div>
         </div>
       </section>
-
       {/* About Us Section */}
       <section id="about" className="py-12 sm:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -246,7 +241,6 @@ export default function EuroWeldProWebsite() {
                   />
                   <p className="text-xs text-center mt-2 text-gray-600"></p>
                 </div>
-
                 <div
                   className="cursor-pointer hover:scale-105 transition-transform"
                   onClick={() => openLightbox("/cert2.jpg", "")}
@@ -262,7 +256,6 @@ export default function EuroWeldProWebsite() {
                 </div>
               </div>
               <p className="text-sm text-gray-600 italic mb-4">Click on any certification to view full size</p>
-
               {/* PDF Download Section */}
               <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm">
                 <h4 className="text-lg font-semibold text-slate-800 mb-3 flex items-center">
@@ -351,7 +344,6 @@ export default function EuroWeldProWebsite() {
           </div>
         </div>
       </section>
-
       {/* Services Section */}
       <section id="services" className="py-12 sm:py-20 bg-white">
         <div className="container mx-auto px-4">
@@ -455,7 +447,6 @@ export default function EuroWeldProWebsite() {
             </h3>
             <br />
             <br />
-
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
               <Card className="text-center hover:shadow-lg transition-shadow bg-gradient-to-br from-orange-50 to-orange-100">
                 <CardHeader className="pb-4">
@@ -489,14 +480,12 @@ export default function EuroWeldProWebsite() {
               </Card>
             </div>
           </div>
-
           <br />
           <br />
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto font-bold">
             Our team understands the unique requirements of each sector and adapts accordingly to deliver results that
             exceed expectations.
           </p>
-
           {/* Image Slider Section */}
           <div className="mt-12 sm:mt-20">
             <h3 className="text-2xl sm:text-3xl font-bold text-slate-800 text-center mb-8 sm:mb-12">
@@ -559,7 +548,7 @@ export default function EuroWeldProWebsite() {
                 </div>
                 {/* Slide 6 - Video */}
                 <div className="min-w-full h-[250px] sm:h-[300px] md:h-[400px] flex items-center justify-center bg-gray-100">
-                  <video className="w-full h-full object-contain" controls muted loop poster="/eagle.jpg">
+                  <video className="w-full h-full object-contain" controls muted loop poster="/eagle.png">
                     <source src="/video2.mp4" type="video/mp4" />
                     <source src="/video2.webm" type="video/webm" />
                     Your browser does not support the video tag.
@@ -587,7 +576,7 @@ export default function EuroWeldProWebsite() {
                 </div>
                 {/* Slide 9 - Video */}
                 <div className="min-w-full h-[250px] sm:h-[300px] md:h-[400px] flex items-center justify-center bg-gray-100">
-                  <video className="w-full h-full object-contain" controls muted loop poster="/eagle.jpg">
+                  <video className="w-full h-full object-contain" controls muted loop poster="/eagle.png">
                     <source src="/video3.mp4" type="video/mp4" />
                     <source src="/video3.webm" type="video/webm" />
                     Your browser does not support the video tag.
@@ -605,7 +594,7 @@ export default function EuroWeldProWebsite() {
                 </div>
                 {/* Slide 11 - Video */}
                 <div className="min-w-full h-[250px] sm:h-[300px] md:h-[400px] flex items-center justify-center bg-gray-100">
-                  <video className="w-full h-full object-contain" controls muted loop poster="/eagle.jpg">
+                  <video className="w-full h-full object-contain" controls muted loop poster="/eagle.png">
                     <source src="/video4.mp4" type="video/mp4" />
                     <source src="/video4.webm" type="video/webm" />
                     Your browser does not support the video tag.
@@ -623,14 +612,13 @@ export default function EuroWeldProWebsite() {
                 </div>
                 {/* Slide 13 - Video */}
                 <div className="min-w-full h-[250px] sm:h-[300px] md:h-[400px] flex items-center justify-center bg-gray-100">
-                  <video className="w-full h-full object-contain" controls muted loop poster="/eagle.jpg">
+                  <video className="w-full h-full object-contain" controls muted loop poster="/eagle.png">
                     <source src="/video5.mp4" type="video/mp4" />
                     <source src="/video5.webm" type="video/webm" />
                     Your browser does not support the video tag.
                   </video>
                 </div>
               </div>
-
               {/* Main Navigation Arrows */}
               <button
                 className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1.5 sm:p-2 rounded-full transition-colors z-10"
@@ -652,7 +640,6 @@ export default function EuroWeldProWebsite() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
-
               <button
                 className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1.5 sm:p-2 rounded-full transition-colors z-10"
                 onClick={() => {
@@ -673,7 +660,6 @@ export default function EuroWeldProWebsite() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
-
               {/* Dots Indicator - Responsive */}
               <div className="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex flex-wrap gap-1 sm:gap-2 z-20 justify-center max-w-[90%] sm:max-w-2xl">
                 {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((index) => (
@@ -699,7 +685,6 @@ export default function EuroWeldProWebsite() {
           </div>
         </div>
       </section>
-
       {/* For Candidates Section */}
       <section id="candidates" className="py-12 sm:py-20 bg-gradient-to-r from-slate-800 to-slate-700 text-white">
         <div className="container mx-auto px-4">
@@ -744,7 +729,6 @@ export default function EuroWeldProWebsite() {
               />
             </div>
           </div>
-
           {/* Our Workforce Section */}
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 sm:p-8">
             <div className="text-center mb-8 sm:mb-12">
@@ -755,7 +739,6 @@ export default function EuroWeldProWebsite() {
                 We recruit, train, and deploy only the most competent professionals, including:
               </p>
             </div>
-
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
               {/* Welders */}
               <div className="text-center group hover:scale-105 transition-transform">
@@ -764,7 +747,6 @@ export default function EuroWeldProWebsite() {
                 </div>
                 <h4 className="text-sm sm:text-base font-semibold text-white">Welders</h4>
               </div>
-
               {/* Fabricators */}
               <div className="text-center group hover:scale-105 transition-transform">
                 <div className="bg-white/20 rounded-lg p-4 sm:p-6 mb-3">
@@ -772,7 +754,6 @@ export default function EuroWeldProWebsite() {
                 </div>
                 <h4 className="text-sm sm:text-base font-semibold text-white">Fabricators</h4>
               </div>
-
               {/* Electricians */}
               <div className="text-center group hover:scale-105 transition-transform">
                 <div className="bg-white/20 rounded-lg p-4 sm:p-6 mb-3">
@@ -780,7 +761,6 @@ export default function EuroWeldProWebsite() {
                 </div>
                 <h4 className="text-sm sm:text-base font-semibold text-white">Electricians</h4>
               </div>
-
               {/* Fitters */}
               <div className="text-center group hover:scale-105 transition-transform">
                 <div className="bg-white/20 rounded-lg p-4 sm:p-6 mb-3">
@@ -788,7 +768,6 @@ export default function EuroWeldProWebsite() {
                 </div>
                 <h4 className="text-sm sm:text-base font-semibold text-white">Fitters</h4>
               </div>
-
               {/* Pipe Welders */}
               <div className="text-center group hover:scale-105 transition-transform">
                 <div className="bg-white/20 rounded-lg p-4 sm:p-6 mb-3">
@@ -796,7 +775,6 @@ export default function EuroWeldProWebsite() {
                 </div>
                 <h4 className="text-sm sm:text-base font-semibold text-white">Pipe Welders</h4>
               </div>
-
               {/* Technical Specialists */}
               <div className="text-center group hover:scale-105 transition-transform">
                 <div className="bg-white/20 rounded-lg p-4 sm:p-6 mb-3">
@@ -805,14 +783,12 @@ export default function EuroWeldProWebsite() {
                 <h4 className="text-sm sm:text-base font-semibold text-white">Technical Specialists</h4>
               </div>
             </div>
-
             <div className="text-center mt-8 sm:mt-12">
               <p className="text-sm sm:text-base text-gray-200 italic">And other technical specialists</p>
             </div>
           </div>
         </div>
       </section>
-
       {/* Contact Section */}
       <section id="contact" className="py-12 sm:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -835,7 +811,6 @@ export default function EuroWeldProWebsite() {
                     </p>
                   </div>
                 </div>
-
                 <div className="flex items-center space-x-3">
                   <div>
                     <span className="text-sm sm:text-base font-medium text-slate-800">📞 Phone:</span>
@@ -846,7 +821,6 @@ export default function EuroWeldProWebsite() {
                     </p>
                   </div>
                 </div>
-
                 <div className="flex items-center space-x-3">
                   <div>
                     <span className="text-sm sm:text-base font-medium text-slate-800">🌍 Website:</span>
@@ -862,7 +836,6 @@ export default function EuroWeldProWebsite() {
                     </p>
                   </div>
                 </div>
-
                 <div className="flex items-center space-x-3">
                   <div>
                     <span className="text-sm sm:text-base font-medium text-slate-800">📍 Head Office:</span>
@@ -874,10 +847,8 @@ export default function EuroWeldProWebsite() {
                   </div>
                 </div>
               </div>
-
               {/* Divider */}
               <div className="border-t border-gray-300 my-6"></div>
-
               {/* Social Media Links */}
               <div className="text-center">
                 <h4 className="text-lg sm:text-xl font-semibold mb-4 text-slate-800">🔗 Connect With Us</h4>
@@ -920,7 +891,6 @@ export default function EuroWeldProWebsite() {
           </div>
         </div>
       </section>
-
       {/* Footer */}
       <footer className="bg-slate-800 text-white py-8 sm:py-12">
         <div className="container mx-auto px-4">
@@ -928,7 +898,7 @@ export default function EuroWeldProWebsite() {
             <div className="col-span-1 sm:col-span-2 md:col-span-1">
               <div className="flex items-center space-x-3 mb-4">
                 <Image
-                  src="/eagle.jpg"
+                  src="/eagle.png"
                   alt="Eagle World LLC Logo"
                   width={32}
                   height={32}
@@ -1009,6 +979,28 @@ export default function EuroWeldProWebsite() {
           </div>
         </div>
       </footer>
+
+      {/* Lightbox */}
+      <div
+        id="lightbox"
+        className="fixed inset-0 bg-black/80 flex items-center justify-center z-[999] hidden"
+        onClick={closeLightbox}
+      >
+        <div className="relative max-w-3xl max-h-[90vh] mx-auto p-4" onClick={(e) => e.stopPropagation()}>
+          <button className="absolute top-2 right-2 text-white text-3xl font-bold z-10" onClick={closeLightbox}>
+            &times;
+          </button>
+          <Image
+            id="lightbox-img"
+            src="/placeholder.svg"
+            alt="Lightbox Image"
+            width={1200}
+            height={800}
+            className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-xl"
+          />
+          <p id="lightbox-title" className="text-white text-center mt-4 text-lg"></p>
+        </div>
+      </div>
     </div>
   )
 }
