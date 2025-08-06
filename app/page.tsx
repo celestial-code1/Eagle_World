@@ -898,7 +898,7 @@ export default function EuroWeldProWebsite() {
             <div className="col-span-1 sm:col-span-2 md:col-span-1">
               <div className="flex items-center space-x-3 mb-4">
                 <Image
-                  src="/eagle.png"
+                  src="/eagle.jpg"
                   alt="Eagle World LLC Logo"
                   width={32}
                   height={32}
