@@ -805,8 +805,8 @@ export default function EuroWeldProWebsite() {
                   <div>
                     <span className="text-sm sm:text-base font-medium text-slate-800">📧 Email:</span>
                     <p className="text-orange-600 hover:text-orange-700 transition-colors">
-                      <a href="mailto:info@eagleworld.com" className="text-sm sm:text-base">
-                        info@eagleworld.com
+                      <a href="mailto:profitech@eagleworldlimited.com" className="text-sm sm:text-base">
+                        profitech@eagleworldlimited.com
                       </a>
                     </p>
                   </div>
@@ -826,12 +826,12 @@ export default function EuroWeldProWebsite() {
                     <span className="text-sm sm:text-base font-medium text-slate-800">🌍 Website:</span>
                     <p className="text-orange-600 hover:text-orange-700 transition-colors">
                       <a
-                        href="https://www.eagleworld.com"
+                        href="https://www.eagleworldlimited.com"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-sm sm:text-base"
                       >
-                        www.eagleworld.com
+                        www.eagleworldlimited.com
                       </a>
                     </p>
                   </div>
